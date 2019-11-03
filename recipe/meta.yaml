@@ -1,9 +1,9 @@
-{%set name = "requests-ftp" %}
-{%set version = "0.3.1" %}
-{%set compress_type = "tar.gz" %}
-{%set hash_type = "sha256" %}
-{%set hash_val = "7504ceb5cba8a5c0135ed738596820a78c5f2be92d79b29f96ba99b183d8057a" %}
-{%set build_num = "0" %}
+{% set name = "requests-ftp" %}
+{% set version = "0.3.1" %}
+{% set compress_type = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_val = "7504ceb5cba8a5c0135ed738596820a78c5f2be92d79b29f96ba99b183d8057a" %}
+{% set build_num = "0" %}
 
 package:
   name: {{ name|lower }}
