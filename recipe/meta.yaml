@@ -1,32 +1,28 @@
 {% set name = "requests-ftp" %}
 {% set version = "0.3.1" %}
-{% set compress_type = "tar.gz" %}
-{% set hash_val = "7504ceb5cba8a5c0135ed738596820a78c5f2be92d79b29f96ba99b183d8057a" %}
-{% set build_num = "0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ compress_type }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
-  sha256: {{ hash_val }}
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 7504ceb5cba8a5c0135ed738596820a78c5f2be92d79b29f96ba99b183d8057a
 
 build:
-  number: {{ build_num }}
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: python
+  number: 1
+  script: {{ PYTHON }} -m pip install .
 
 
 requirements:
-  build:
-    - python
-    - setuptools
-
+  host:
+    - python >=3
+    - pip
   run:
-    - python
+    - python >=3
     - requests >=2.3.0
-    - wsgiref  # [py2k]
 
 test:
   imports:
@@ -34,7 +30,7 @@ test:
 
 about:
   home: https://github.com/Lukasa/requests-ftp
-  license: Apache-2
+  license: Apache-2.0
   license_file: LICENSE
   license_family: Apache
   summary: 'An FTP transport adapter for use with the Python Requests library'
